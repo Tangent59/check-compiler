@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "check-compiler"
+version = "0.1.0"
+description = "Compile PostgreSQL CHECK constraints into trigger-based enforcement strategies."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "sqlglot>=26.0.0",
+]
+
+[project.optional-dependencies]
+postgres = [
+    "psycopg[binary]>=3.2.0",
+]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

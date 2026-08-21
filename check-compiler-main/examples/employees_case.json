@@ -1,0 +1,28 @@
+{
+  "case_name": "employees",
+  "fixture_sql": "employees.sql",
+  "table_name": "employees",
+  "insert_columns": ["id", "salary", "bonus", "name", "misc"],
+  "dataset": "employees_basic",
+  "workloads": [
+    {
+      "name": "insert",
+      "kind": "insert"
+    },
+    {
+      "name": "update_salary",
+      "kind": "sql",
+      "sql": "UPDATE {table} SET salary = salary + 10 WHERE id % 2 = 0;"
+    },
+    {
+      "name": "update_name",
+      "kind": "sql",
+      "sql": "UPDATE {table} SET name = name || '_x' WHERE id % 2 = 1;"
+    },
+    {
+      "name": "update_misc",
+      "kind": "sql",
+      "sql": "UPDATE {table} SET misc = misc || '_x' WHERE id % 2 = 1;"
+    }
+  ]
+}
